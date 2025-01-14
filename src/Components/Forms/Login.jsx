@@ -1,20 +1,59 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { MainContext } from "../../Provider/Authcontext";
+import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { handelLogin, handelGoogleLogin } = useContext(MainContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    handelLogin(email, password)
+      .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Log In Success",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        // console.log("vuya user",err)
+      });
+  };
 
+  const googleLoginUser = () => {
+    handelGoogleLogin()
+      .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Google LogIn Success",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        // console.log("vuya gamil",err)
+      });
+  };
   return (
     <div className="hero min-h-screen ">
       <div className="card bg-base-100 shrink-0 shadow-2xl md:w-6/12">
         <p className="w-full text-3xl font-bold text-center mt-3">LogIn Now</p>
-        <div className="btn mt-7 md:w-1/2 mx-auto">
-          <button className="w-full">Google LogIn</button>
+        <div onClick={googleLoginUser} className="btn mt-7 md:w-1/2 mx-auto ">
+          <FcGoogle className="text-3xl"></FcGoogle>
+          <span className="text-xl">Google LogIn</span>
         </div>
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           {/* Email */}

@@ -1,16 +1,45 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { MainContext } from "../../Provider/Authcontext";
+import { updateProfile } from "firebase/auth";
+import auth from "../../firebase";
+import Swal from "sweetalert2";
 
 const Singup = () => {
+  const navigate = useNavigate();
+  const { handelSingUp } = useContext(MainContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   //   TODU:
   const onSubmit = (data) => {
-    console.log(data);
-    console.log("aro kaj kora jabe", data?.fristname);
+    const { email, password, photoUrl, fristname } = data;
+    console.log(email, password, photoUrl, fristname);
+
+    handelSingUp(email, password).then(() => {
+      updateProfile(auth.currentUser, {
+        displayName: fristname,
+        photoURL: photoUrl,
+      })
+        .then((res) => {
+          // Todu:
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Sing Up Success",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          navigate("/");
+        })
+        .catch((err) => {
+          // console.log("user singUp hoy nai", err);
+        });
+    });
   };
   return (
     <div className="hero min-h-screen ">

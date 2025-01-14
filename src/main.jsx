@@ -5,11 +5,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Forms/Login";
 import Singup from "./Components/Forms/Singup";
+import Authcontext from "./Provider/Authcontext";
+import HomeLayOut from "./Components/Home/HomeLayOut";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+    children: [
+      {
+        path: "/",
+        element: <HomeLayOut></HomeLayOut>,
+      },
+    ],
   },
   {
     path: "/login",
@@ -23,6 +31,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Authcontext>
+      <RouterProvider router={router} />
+    </Authcontext>
   </StrictMode>
 );

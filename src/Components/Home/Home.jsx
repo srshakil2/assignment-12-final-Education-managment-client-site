@@ -16,8 +16,8 @@ const Home = () => {
       </div>
 
       {/* main outlet */}
-      <div className="my-20">
-        <h3 className="text-5xl">This is Home</h3>
+      <div className="">
+        {/*  */}
         <Outlet></Outlet>
       </div>
       {/* Footer */}

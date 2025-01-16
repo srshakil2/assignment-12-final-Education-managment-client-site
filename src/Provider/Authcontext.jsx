@@ -8,12 +8,13 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase";
+// import useAxiosOpen from "../Hooks/useAxiosOpen";
 
 export const MainContext = createContext();
 const Authcontext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loding, setLoding] = useState(true);
-
+  // console.log(user);
   //   sing Up func
   const handelSingUp = (email, password) => {
     setLoding(true);
@@ -41,10 +42,12 @@ const Authcontext = ({ children }) => {
         // console.log(error.message);
       });
   };
+
   // wach user activitis
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (courenUser) => {
       if (courenUser) {
+        // console.log(courenUser);
         setUser(courenUser);
       }
       setLoding(false);

@@ -4,9 +4,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { MainContext } from "../../Provider/Authcontext";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
+import useAxiosOpen from "../../Hooks/useAxiosOpen";
 
 const Login = () => {
   const navigate = useNavigate();
+  const axiosOpen = useAxiosOpen();
   const { handelLogin, handelGoogleLogin } = useContext(MainContext);
   const {
     register,
@@ -31,9 +33,26 @@ const Login = () => {
       });
   };
 
+  // TODO:
   const googleLoginUser = () => {
     handelGoogleLogin()
       .then((res) => {
+        // TODO:
+        // console.log(res?.user);
+        const userInfo = {
+          name: res?.user?.displayName,
+          email: res?.user?.email,
+          role: "student",
+        };
+        axiosOpen
+          .post("/users", userInfo)
+          .then((res) => {
+            // TODU:
+            // console.log(res.data);
+          })
+          .catch((err) => {
+            // console.log("user database e jai nai", err);
+          });
         Swal.fire({
           position: "center",
           icon: "success",

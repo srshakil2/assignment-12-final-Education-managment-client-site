@@ -5,18 +5,18 @@ import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
-    <div>
+    <div className="relative">
       <Helmet>
         <title>Education || Home</title>
       </Helmet>
 
       {/* this is navber */}
-      <div>
+      <div className="sticky top-0 z-10 opacity-90">
         <Navber></Navber>
       </div>
 
       {/* main outlet */}
-      <div className="">
+      <div>
         {/*  */}
         <Outlet></Outlet>
       </div>

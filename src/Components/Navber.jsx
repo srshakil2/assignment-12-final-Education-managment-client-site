@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navber = () => {
   const { handelLogOut, user } = useContext(MainContext);
+  // console.log(user?.photoURL);
   const handelLogOutUser = () => {
     handelLogOut();
   };
@@ -82,10 +83,7 @@ const Navber = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={user?.photoURL}
-                  />
+                  <img alt="" defaultChecked src={user?.photoURL} />
                 </div>
               </div>
               <ul

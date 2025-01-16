@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "../Shared/Banner";
+import Highlight from "../Highligth/Highlight";
 
 const HomeLayOut = () => {
   return (
@@ -8,8 +9,20 @@ const HomeLayOut = () => {
       <section>
         <Banner></Banner>
       </section>
-
-      <p>This is Home ley out</p>
+      {/* highlight section */}
+      <section>
+        <Highlight></Highlight>
+      </section>
+      {/* TODU: */}
+      {/* hight enrolment slider database */}
+      <section className="p-20 text-5xl">
+        TODU: highest enrolment slider section hobbe from database
+      </section>
+      {/* TODU: */}
+      {/* User feedback database */}
+      <section className="p-20 text-5xl">
+        TODU: User feedback carousel section hobbe from database
+      </section>
     </div>
   );
 };

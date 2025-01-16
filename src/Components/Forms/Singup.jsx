@@ -1,13 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MainContext } from "../../Provider/Authcontext";
 import { updateProfile } from "firebase/auth";
 import auth from "../../firebase";
 import Swal from "sweetalert2";
+import useAxiosOpen from "../../Hooks/useAxiosOpen";
 
 const Singup = () => {
+  const axiosOpen = useAxiosOpen();
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+
   const { handelSingUp } = useContext(MainContext);
   const {
     register,
@@ -15,26 +19,47 @@ const Singup = () => {
     formState: { errors },
   } = useForm();
 
+  // handel name fild
+  const hendelName = (e) => {
+    e.preventDefault();
+    setUserName(e.target.value);
+  };
+
   //   TODU:
   const onSubmit = (data) => {
     const { email, password, photoUrl, fristname } = data;
-    console.log(email, password, photoUrl, fristname);
-
+    // console.log(email, password, photoUrl, fristname);
     handelSingUp(email, password).then(() => {
       updateProfile(auth.currentUser, {
-        displayName: fristname,
+        displayName: userName,
         photoURL: photoUrl,
       })
         .then((res) => {
           // Todu:
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Sing Up Success",
-            showConfirmButton: false,
-            timer: 1000,
-          });
-          navigate("/");
+          const userInfo = {
+            name: userName,
+            email: email,
+            role: "student",
+          };
+          axiosOpen
+            .post("/users", userInfo)
+            .then((res) => {
+              // tudu:-----------------
+              // console.log(res.data);
+              if (res.data.insertedId) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Sing Up Success",
+                  showConfirmButton: false,
+                  timer: 1000,
+                });
+                navigate("/");
+              }
+            })
+            .catch((err) => {
+              console.log("user database e jai nai", err);
+            });
         })
         .catch((err) => {
           // console.log("user singUp hoy nai", err);
@@ -55,6 +80,7 @@ const Singup = () => {
             </label>
             <input
               type="text"
+              onKeyUp={(e) => hendelName(e)}
               placeholder="Frist Name"
               {...register("fristname", { required: true })}
               className="input input-bordered"

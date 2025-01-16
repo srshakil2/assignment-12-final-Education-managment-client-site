@@ -16,7 +16,7 @@ const HomeLayOut = () => {
       {/* TODU: */}
       {/* hight enrolment slider database */}
       <section className="p-20 text-5xl">
-        TODU: highest enrolment slider section hobbe from database
+        TODU: card highest enrolment slider section hobbe from database
       </section>
       {/* TODU: */}
       {/* User feedback database */}

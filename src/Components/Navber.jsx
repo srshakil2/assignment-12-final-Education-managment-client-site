@@ -17,7 +17,7 @@ const Navber = () => {
         <a>All Classes</a>
       </li>
       <li className="text-white text-lg font-semibold">
-        <a>Teach on Educations</a>
+        <a>Teach on</a>
       </li>
     </>
   );
@@ -91,10 +91,7 @@ const Navber = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a>Profile</a>
-                </li>
-                <li>
-                  <a>Settings</a>
+                  <Link to={"/dashboard"}>Dashboard</Link>
                 </li>
                 <li>
                   <a>Logout</a>

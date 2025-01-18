@@ -14,6 +14,7 @@ import MyClass from "./Components/Pages/MyClass";
 import Profile from "./Components/Pages/Profile";
 // tan stack query
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import SeeDetails from "./Components/Pages/SeeDetails";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -48,6 +49,13 @@ const router = createBrowserRouter([
         path: "/dashboard/myClass",
         // privet
         element: <MyClass></MyClass>,
+      },
+      {
+        path: "/dashboard/myClass/:id",
+        // privet
+        element: <SeeDetails></SeeDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
       },
       {
         path: "/dashboard/profile",

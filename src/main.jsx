@@ -15,6 +15,10 @@ import Profile from "./Components/Pages/Profile";
 // tan stack query
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SeeDetails from "./Components/Pages/SeeDetails";
+import TeachOn from "./Components/TeachOn/TeachOn";
+import TeacherReq from "./Components/Pages/Addmin/TeacherReq";
+import Users from "./Components/Pages/Addmin/Users";
+import AllClasses from "./Components/Pages/Addmin/AllClasses";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -26,6 +30,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomeLayOut></HomeLayOut>,
+      },
+      {
+        path: "/teachon",
+        // privet
+        element: <TeachOn></TeachOn>,
       },
     ],
   },
@@ -42,24 +51,38 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/addClass",
-        // privet
+        // privet teacher
         element: <AddClass></AddClass>,
       },
       {
         path: "/dashboard/myClass",
-        // privet
+        // privet teacher
         element: <MyClass></MyClass>,
       },
       {
         path: "/dashboard/myClass/:id",
-        // privet
+        // privet teacher
         element: <SeeDetails></SeeDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
       },
       {
+        path: "/dashboard/teacherreq",
+        // privet Addmin
+        element: <TeacherReq></TeacherReq>,
+      },
+      {
+        path: "/dashboard/users",
+        // privet Addmin
+        element: <Users></Users>,
+      },
+      {
+        path: "/dashboard/allclasses",
+        element: <AllClasses></AllClasses>,
+      },
+      {
         path: "/dashboard/profile",
-        // privet
+        // privet sobar jonno
         element: <Profile></Profile>,
       },
     ],

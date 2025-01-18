@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MainContext } from "../Provider/Authcontext";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navber = () => {
   const { handelLogOut, user } = useContext(MainContext);
@@ -11,13 +11,13 @@ const Navber = () => {
   const linkData = (
     <>
       <li className="text-white text-lg font-semibold">
-        <a>Home</a>
+        <NavLink to={"/"}>Home</NavLink>
       </li>
       <li className="text-white text-lg font-semibold">
         <a>All Classes</a>
       </li>
       <li className="text-white text-lg font-semibold">
-        <a>Teach on</a>
+        <NavLink to={"/teachon"}>Teach on</NavLink>
       </li>
     </>
   );

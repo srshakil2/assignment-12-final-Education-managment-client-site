@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [admin, setAdmin] = useState({});
   const axiosPrivet = useAxiosPrivet();
   const onUser = { email: user?.email };
-  console.log(admin);
+  // console.log(admin);
   useEffect(() => {
     axiosPrivet
       .get(`/user/${user?.email}`, onUser)

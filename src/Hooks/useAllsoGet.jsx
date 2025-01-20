@@ -6,7 +6,7 @@ const useAllsoGet = (input) => {
 
   // TanStack Query
   const { refetch, data = [] } = useQuery({
-    queryKey: [`${input}`],
+    queryKey: [`${input}`, input],
     queryFn: async () => {
       const res = await axiosOpen.get(input);
       return res.data;

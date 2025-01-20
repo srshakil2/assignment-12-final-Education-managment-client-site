@@ -35,11 +35,13 @@ const Singup = () => {
         photoURL: photoUrl,
       })
         .then((res) => {
+          // console.log(photoUrl);
           // Todu:
           const userInfo = {
             name: userName,
             email: email,
             role: "student",
+            photoUrl: photoUrl,
           };
           axiosOpen
             .post("/users", userInfo)
@@ -58,7 +60,7 @@ const Singup = () => {
               }
             })
             .catch((err) => {
-              console.log("user database e jai nai", err);
+              // console.log("user database e jai nai", err);
             });
         })
         .catch((err) => {

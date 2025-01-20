@@ -1,12 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import useAllsoGet from "../../../Hooks/useAllsoGet";
+import { useState } from "react";
 import { FaUserShield } from "react-icons/fa";
-import { MainContext } from "../../../Provider/Authcontext";
 import useAllUsers from "../../../Hooks/useAllUsers";
+import useAxiosPrivet from "../../../Hooks/useAxiosPrivet";
+import Swal from "sweetalert2";
 
 const Users = () => {
   const [search, setSearch] = useState("");
   const [data, refetch] = useAllUsers(`/users?search=${search}`);
+  const axiosPrivet = useAxiosPrivet();
+
   // Tudu: search oparation
   const handelSearch = (e) => {
     setSearch(e.target.value);
@@ -16,7 +18,25 @@ const Users = () => {
   // const chackAdmin = data.find((item) => auth?.email === item?.email);
   // Tudu: make addmin btn func
   const handleMakeAdmin = (id) => {
-    console.log(id, "---------------");
+    const addminUser = { id, role: "addmin" };
+    axiosPrivet
+      .patch(`/user/${id}`, addminUser)
+      .then((res) => {
+        console.log(res.data, "---------------done");
+        if (res.data?.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "User has been Addmin now!",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          refetch();
+        }
+      })
+      .catch((err) => {
+        // console.log(err)
+      });
   };
   return (
     <div>

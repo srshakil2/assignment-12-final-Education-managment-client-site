@@ -20,6 +20,8 @@ import TeacherReq from "./Components/Pages/Addmin/TeacherReq";
 import Users from "./Components/Pages/Addmin/Users";
 import AllClasses from "./Components/Pages/Addmin/AllClasses";
 import Error from "./Components/Error";
+import AllClass from "./Components/AllClass/AllClass";
+import ClassDetailsPage from "./Components/AllClass/ClassDetails/ClassDetailsPage";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -32,6 +34,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomeLayOut></HomeLayOut>,
+      },
+      {
+        path: "/allClass",
+        element: <AllClass></AllClass>,
+      },
+      {
+        path: "/allclass/classdetails/:id",
+        // privet
+        element: <ClassDetailsPage></ClassDetailsPage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
       },
       {
         path: "/teachon",

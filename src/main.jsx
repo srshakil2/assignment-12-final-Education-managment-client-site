@@ -19,6 +19,7 @@ import TeachOn from "./Components/TeachOn/TeachOn";
 import TeacherReq from "./Components/Pages/Addmin/TeacherReq";
 import Users from "./Components/Pages/Addmin/Users";
 import AllClasses from "./Components/Pages/Addmin/AllClasses";
+import Error from "./Components/Error";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -43,6 +45,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     // privet
     element: <Dashboard></Dashboard>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/dashboard",

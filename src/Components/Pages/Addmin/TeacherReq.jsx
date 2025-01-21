@@ -33,7 +33,7 @@ const TeacherReq = () => {
   };
   // Todu: handleReject btn
   const handleReject = (id) => {
-    const data = { status: "rejected " };
+    const data = { status: "rejected" };
     axiosPrivet
       .patch(`/addteach/reject/${id}`, data)
       .then((res) => {

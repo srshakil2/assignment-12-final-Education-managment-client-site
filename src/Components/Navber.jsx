@@ -94,15 +94,11 @@ const Navber = () => {
                   <Link to={"/dashboard"}>Dashboard</Link>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <button onClick={handelLogOutUser} className="">
+                    Logout
+                  </button>
                 </li>
               </ul>
-            </div>
-            {/* btn */}
-            <div>
-              <button onClick={handelLogOutUser} className="btn">
-                Log Out
-              </button>
             </div>
           </>
         ) : (

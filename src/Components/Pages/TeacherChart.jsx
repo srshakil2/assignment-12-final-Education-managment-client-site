@@ -43,7 +43,7 @@ const PieChartWithCustomizedLabel = ({ enrol, totalAss, totalSubmition }) => {
     { name: "Group B", value: totalAss },
     { name: "Group C", value: totalSubmition },
   ];
-  console.log(enrol);
+  // console.log(enrol);
   return (
     <ResponsiveContainer width="100%" height={400}>
       <PieChart>

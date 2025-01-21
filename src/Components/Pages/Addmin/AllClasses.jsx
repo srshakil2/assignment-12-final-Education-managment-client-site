@@ -1,26 +1,83 @@
 import useAllsoGet from "../../../Hooks/useAllsoGet";
 import { FaCheck, FaTimes, FaChartBar } from "react-icons/fa";
+import useAxiosPrivet from "../../../Hooks/useAxiosPrivet";
+import Swal from "sweetalert2";
 
 const AllClasses = () => {
   const [data, refetch] = useAllsoGet("/allclass");
-  console.log(data);
-  // Todu: Approve class btn
+  const axiosPrivet = useAxiosPrivet();
+  // console.log(data);
+  //  Approve class btn
   const handleApprove = (id) => {
-    console.log("Approve");
+    const approve = { status: "approves" };
+    axiosPrivet
+      .patch(`/allclass/approve/${id}`, approve)
+      .then((res) => {
+        // console.log(res.data);
+        if (res.data?.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Class is Accept",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          refetch();
+        }
+      })
+      .catch((err) => {
+        // console.log(err)
+      });
   };
-  // Todu: reject class btn
+  //  reject class btn
   const handleReject = (id) => {
-    console.log("rejected");
+    const rejected = { status: "rejected" };
+    axiosPrivet
+      .patch(`/allclass/approve/${id}`, rejected)
+      .then((res) => {
+        // console.log(res.data);
+        if (res.data?.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Class is Rejected by Addmin",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          refetch();
+        }
+      })
+      .catch((err) => {
+        // console.log(err)
+      });
   };
-  // Todu: Progress class btn
+  //  Progress class btn
   const handleProgress = (id) => {
-    console.log("progress");
+    const pogress = { status: "pogress" };
+    axiosPrivet
+      .patch(`/allclass/approve/${id}`, pogress)
+      .then((res) => {
+        // console.log(res.data);
+        if (res.data?.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Class is pogress by Addmin",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          refetch();
+        }
+      })
+      .catch((err) => {
+        // console.log(err)
+      });
   };
   return (
     <div>
       <div className="p-4">
         <h1 className="text-xl md:text-2xl font-bold text-center mb-6">
-          Teacher Dashboard
+          All Class Request
         </h1>
         <div className="overflow-x-auto">
           <table className="table w-full">
@@ -63,6 +120,7 @@ const AllClasses = () => {
                   </td>
                   {/* buttons-3 */}
                   <td className="flex space-x-2">
+                    {/* approbe btn */}
                     <button
                       onClick={() => handleApprove(item._id)}
                       disabled={item.status !== "pending"}
@@ -74,6 +132,7 @@ const AllClasses = () => {
                     >
                       <FaCheck />
                     </button>
+                    {/* reject btn */}
                     <button
                       onClick={() => handleReject(item._id)}
                       disabled={item.status !== "pending"}
@@ -83,6 +142,7 @@ const AllClasses = () => {
                     >
                       <FaTimes />
                     </button>
+                    {/* progress btn */}
                     <button
                       onClick={() => handleProgress(item._id)}
                       disabled={item.status !== "approves"}

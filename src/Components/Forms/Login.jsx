@@ -38,10 +38,11 @@ const Login = () => {
     handelGoogleLogin()
       .then((res) => {
         // TODO:
-        // console.log(res?.user);
+        // console.log(res?.user?.photoURL);
         const userInfo = {
           name: res?.user?.displayName,
           email: res?.user?.email,
+          photoUrl: res?.user?.photoURL,
           role: "student",
         };
         axiosOpen

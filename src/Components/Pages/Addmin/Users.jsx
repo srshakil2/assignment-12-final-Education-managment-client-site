@@ -9,20 +9,16 @@ const Users = () => {
   const [data, refetch] = useAllUsers(`/users?search=${search}`);
   const axiosPrivet = useAxiosPrivet();
 
-  // Tudu: search oparation
   const handelSearch = (e) => {
     setSearch(e.target.value);
     refetch();
   };
 
-  // const chackAdmin = data.find((item) => auth?.email === item?.email);
-  // Tudu: make addmin btn func
   const handleMakeAdmin = (id) => {
     const addminUser = { id, role: "addmin" };
     axiosPrivet
       .patch(`/user/${id}`, addminUser)
       .then((res) => {
-        console.log(res.data, "---------------done");
         if (res.data?.modifiedCount > 0) {
           Swal.fire({
             position: "center",

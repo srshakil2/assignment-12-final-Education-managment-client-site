@@ -8,7 +8,6 @@ import { MainContext } from "../../Provider/Authcontext";
 import PieChartWithCustomizedLabel from "./TeacherChart";
 
 const SeeDetails = () => {
-  const [enrol, setEnrol] = useState(0);
   const [totalAss, setTotalAss] = useState([]);
   const [totalSubmition, setTotalSubmition] = useState(0);
 
@@ -20,8 +19,7 @@ const SeeDetails = () => {
   const userEmail = { email: loadData?.email };
   useEffect(() => {
     //
-    const totalEnroll = data.reduce((sum, item) => sum + item.enroll, 0);
-    setEnrol(totalEnroll);
+
     axiosPrivet
       .get(`/allassignment/count/${loadData?.email}`, userEmail)
       .then(async (res) => {
@@ -34,6 +32,7 @@ const SeeDetails = () => {
         // console.log(err);
       });
   }, [data]);
+  // console.log(enrol);
 
   return (
     <>
@@ -74,7 +73,7 @@ const SeeDetails = () => {
               <FaUserFriends className="text-blue-500 text-4xl" />
               <div className="ml-4">
                 <h2 className="card-title text-lg">Total Enrollment</h2>
-                <p className="text-2xl font-bold">{enrol}</p>
+                <p className="text-2xl font-bold">{loadData?.enroll}</p>
               </div>
             </div>
           </div>
@@ -108,7 +107,7 @@ const SeeDetails = () => {
           {/* charts */}
           <div className="container mx-auto">
             <PieChartWithCustomizedLabel
-              enrol={enrol}
+              enrol={loadData?.enroll}
               totalAss={totalAss}
               totalSubmition={totalSubmition}
             ></PieChartWithCustomizedLabel>

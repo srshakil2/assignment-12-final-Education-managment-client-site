@@ -24,6 +24,7 @@ import AllClass from "./Components/AllClass/AllClass";
 import ClassDetailsPage from "./Components/AllClass/ClassDetails/ClassDetailsPage";
 import Prement from "./Components/AllClass/Prement/Prement";
 import MyEnrolls from "./Components/Pages/Student/MyEnrolls";
+import EnrollClassDetails from "./Components/Pages/Student/EnrollClassDetails";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -110,6 +111,13 @@ const router = createBrowserRouter([
         path: "/dashboard/myenrollclass",
         // privet student .eikhane eita alada vabe student privet kora lagbe na
         element: <MyEnrolls></MyEnrolls>,
+      },
+      {
+        path: "/dashboard/myenrollclass/:email",
+        // privet student .eikhane eita alada vabe student privet kora lagbe na
+        element: <EnrollClassDetails></EnrollClassDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/onteach/${params.email}`),
       },
       {
         path: "/dashboard/profile",

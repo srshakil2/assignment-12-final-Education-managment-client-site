@@ -22,6 +22,8 @@ import AllClasses from "./Components/Pages/Addmin/AllClasses";
 import Error from "./Components/Error";
 import AllClass from "./Components/AllClass/AllClass";
 import ClassDetailsPage from "./Components/AllClass/ClassDetails/ClassDetailsPage";
+import Prement from "./Components/AllClass/Prement/Prement";
+import MyEnrolls from "./Components/Pages/Student/MyEnrolls";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -43,6 +45,13 @@ const router = createBrowserRouter([
         path: "/allclass/classdetails/:id",
         // privet
         element: <ClassDetailsPage></ClassDetailsPage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
+      },
+      {
+        path: "/payment/:id",
+        // privet
+        element: <Prement></Prement>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
       },
@@ -94,7 +103,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/allclasses",
+        // privet Addmin
         element: <AllClasses></AllClasses>,
+      },
+      {
+        path: "/dashboard/myenrollclass",
+        // privet student .eikhane eita alada vabe student privet kora lagbe na
+        element: <MyEnrolls></MyEnrolls>,
       },
       {
         path: "/dashboard/profile",

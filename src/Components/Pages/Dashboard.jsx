@@ -92,7 +92,7 @@ const Dashboard = () => {
         ) : (
           ""
         )}
-        {/* TODU: condition teacher */}
+        {/* condition teacher */}
         {admin.role === "teacher" ? (
           <div>
             <NavLink
@@ -119,6 +119,22 @@ const Dashboard = () => {
                 <RiContactsBookFill></RiContactsBookFill>
               </span>
               <span>My Class</span>
+            </NavLink>
+          </div>
+        ) : (
+          ""
+        )}
+        {/* student */}
+        {admin.role === "student" ? (
+          <div>
+            <NavLink
+              to={"/dashboard/myenrollclass"}
+              className={"text-xl font-bold flex  items-center gap-3"}
+            >
+              <span>
+                <RiContactsBookFill></RiContactsBookFill>
+              </span>
+              <span>My Enroll Class</span>
             </NavLink>
           </div>
         ) : (

@@ -12,6 +12,7 @@ const AllClass = () => {
       return items;
     });
     setAllClass(filteringData);
+    refetch();
   }, [data]);
 
   return (

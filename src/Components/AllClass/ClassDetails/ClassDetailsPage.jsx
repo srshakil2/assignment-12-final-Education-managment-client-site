@@ -1,9 +1,14 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const ClassDetailsPage = () => {
+  const navigate = useNavigate();
   const loadData = useLoaderData();
   const { _id, name, email, title, price, bio, enroll, photoUrl } =
     loadData || {};
+
+  const handelOpen = () => {
+    navigate(`/payment/${_id}`);
+  };
 
   return (
     <div>
@@ -28,11 +33,17 @@ const ClassDetailsPage = () => {
             </div>
             {/* prement modal btn */}
             <div className="card-actions justify-end mt-6">
-              <button className="btn btn-success w-full md:w-auto">Pay</button>
+              <button
+                onClick={handelOpen}
+                className="btn btn-success w-full md:w-auto"
+              >
+                Pay
+              </button>
             </div>
           </div>
         </div>
       </div>
+      {/* ei ta kaj korteche na */}
     </div>
   );
 };

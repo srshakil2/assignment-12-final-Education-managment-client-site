@@ -3,6 +3,7 @@ import Banner from "../Shared/Banner";
 import Highlight from "../Highligth/Highlight";
 
 import Cards from "./Card/Cards";
+import Feedback from "./Feedback/Feedback";
 
 const HomeLayOut = () => {
   return (
@@ -20,10 +21,12 @@ const HomeLayOut = () => {
       <section className="w-11/12 mx-auto mt-10">
         <Cards></Cards>
       </section>
-      {/* TODU: */}
       {/* User feedback database */}
-      <section className="p-20 text-5xl">
-        TODU: User feedback carousel section hobbe from database
+      <section className="w-11/12 mx-auto mt-16">
+        <h2 className="text-4xl font-bold text-center mb-10">
+          Users FeedBack Here
+        </h2>
+        <Feedback></Feedback>
       </section>
     </div>
   );

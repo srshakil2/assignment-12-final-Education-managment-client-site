@@ -22,14 +22,14 @@ const Cards = () => {
     const confrimData = sorting.slice(0, 6);
     setSortedData(confrimData);
   }, [data]);
-  console.log(sortedData);
+
   return (
     <div className="">
       <h2 className="text-3xl font-bold text-center my-10 text-gray-800">
         Popular Courses
       </h2>
       {/* grid md:grid-cols-2 lg:grid-cols-3 gap-5 */}
-      <div className=" ">
+      <div className="">
         <Swiper
           slidesPerView={4}
           spaceBetween={30}
@@ -44,9 +44,9 @@ const Cards = () => {
           className="mySwiper"
         >
           {sortedData.map((popularClass, i) => (
-            <SwiperSlide>
-              <div className="">
-                <Card key={i} popularClass={popularClass}></Card>
+            <SwiperSlide key={i}>
+              <div>
+                <Card popularClass={popularClass}></Card>
               </div>
             </SwiperSlide>
           ))}

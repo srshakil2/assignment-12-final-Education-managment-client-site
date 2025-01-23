@@ -1,10 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useHomePageAll from "../../../Hooks/useHomePageAll";
 import Card from "./Card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import React, { useRef } from "react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination } from "swiper/modules";
 
 const Cards = () => {
   const [sortedData, setSortedData] = useState([]);
   const [data, refetch] = useHomePageAll("/allclass");
+
   useEffect(() => {
     const filterData = data.filter((item) => {
       const i = item.status === "approves";
@@ -14,15 +22,35 @@ const Cards = () => {
     const confrimData = sorting.slice(0, 6);
     setSortedData(confrimData);
   }, [data]);
+  console.log(sortedData);
   return (
     <div className="">
       <h2 className="text-3xl font-bold text-center my-10 text-gray-800">
         Popular Courses
       </h2>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
-        {sortedData.map((popularClass, i) => (
-          <Card key={i} popularClass={popularClass}></Card>
-        ))}
+      {/* grid md:grid-cols-2 lg:grid-cols-3 gap-5 */}
+      <div className=" ">
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, Pagination]}
+          className="mySwiper"
+        >
+          {sortedData.map((popularClass, i) => (
+            <SwiperSlide>
+              <div className="">
+                <Card key={i} popularClass={popularClass}></Card>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

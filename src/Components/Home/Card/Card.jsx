@@ -1,9 +1,11 @@
 import { FaDollarSign, FaEnvelope, FaUsers } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 const Card = ({ popularClass }) => {
   //   console.log(popularClass);
   const { name, email, photoUrl, bio, price, enroll, title } =
     popularClass || {};
+
   const heading = title.slice(0, 20);
   const description = bio.slice(0, 70);
   // Tudo button: viwe ditails
@@ -28,10 +30,13 @@ const Card = ({ popularClass }) => {
         </p>
         <p>{description}...</p>
       </div>
+      {/* to={`/allclass/classdetails/${dataItem?._id}` */}
       <div className="p-5">
-        <button className=" btn w-full text-lg bg-indigo-400 hover:bg-indigo-600">
-          Enroll
-        </button>
+        <NavLink to={`/allclass/classdetails/${popularClass?._id}`}>
+          <button className=" btn w-full text-lg bg-indigo-400 hover:bg-indigo-600">
+            Enroll
+          </button>
+        </NavLink>
       </div>
     </div>
   );

@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../Shared/Banner";
 import Highlight from "../Highligth/Highlight";
-
 import Cards from "./Card/Cards";
 import Feedback from "./Feedback/Feedback";
+import TotalUsers from "./TotalUsersEnroll.jsx/TotalUsers";
+import BecomeTeaching from "./Sections/BecomeTeaching";
+import ExtraOne from "./Sections/ExtraOne";
+import ExtraTwo from "./Sections/ExtraTwo";
+import useAxiosOpen from "../../Hooks/useAxiosOpen";
 
 const HomeLayOut = () => {
+  const [totalFree, setTotalFree] = useState(0);
+  const [freeClass, setFreeClass] = useState([]);
+  const axiosOpen = useAxiosOpen();
+  useEffect(() => {
+    axiosOpen
+      .get("/free/classes")
+      .then((res) => {
+        setFreeClass(res.data);
+        const sumOf = res.data;
+        const sumTaka = sumOf.reduce((sum, i) => sum + Number(i.price), 0);
+        setTotalFree(sumTaka);
+      })
+      .catch((err) => {
+        // console.log(err)
+      });
+  }, []);
   return (
     <div>
       {/* Banner section */}
@@ -16,7 +36,7 @@ const HomeLayOut = () => {
       <section>
         <Highlight></Highlight>
       </section>
-      {/* TODU: */}
+
       {/* hight enrolment slider database */}
       <section className="w-11/12 mx-auto mt-10">
         <Cards></Cards>
@@ -27,6 +47,32 @@ const HomeLayOut = () => {
           Users FeedBack Here
         </h2>
         <Feedback></Feedback>
+      </section>
+      {/* total users enrollment etc */}
+      <section className="w-11/12 mx-auto mt-16">
+        <h4 className="text-4xl font-bold text-center mb-10">
+          Total Class and Enrollment
+        </h4>
+        <TotalUsers></TotalUsers>
+      </section>
+      {/* extra two sextion */}
+      <section className="w-11/12 mx-auto mt-16">
+        <h4 className="text-4xl font-bold text-center mb-4">
+          Unlock {freeClass?.length} Premium Add-ons at <br /> no cost
+        </h4>
+        <p className="text-center mb-10">
+          Save a total of $500 per year compared with purchasing all LearnPress
+          Premium Add-ons.
+        </p>
+        <ExtraTwo freeClass={freeClass} totalFree={totalFree}></ExtraTwo>
+      </section>
+      {/* Become a teaching today */}
+      <section className="w-11/12 mx-auto mt-16">
+        <BecomeTeaching></BecomeTeaching>
+      </section>
+      {/* extra one */}
+      <section className="w-11/12 mx-auto mt-16 mb-10">
+        <ExtraOne></ExtraOne>
       </section>
     </div>
   );

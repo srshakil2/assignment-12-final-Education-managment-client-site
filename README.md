@@ -1,6 +1,8 @@
 # Education-Manage
 
-![Project Banner](https://via.placeholder.com/1200x400?text=Project+Banner)
+### Live Link:
+
+[https://education-manegment.web.app/](https://education-manegment.web.app/)
 
 A modern web application built with powerful tools and libraries to deliver a seamless user experience.
 

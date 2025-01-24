@@ -41,7 +41,7 @@ const Cards = () => {
             disableOnInteraction: false,
           }}
           modules={[Autoplay, Pagination]}
-          className="mySwiper"
+          className="mySwiper "
         >
           {sortedData.map((popularClass, i) => (
             <SwiperSlide key={i}>

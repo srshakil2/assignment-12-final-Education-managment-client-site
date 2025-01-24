@@ -3,6 +3,7 @@ import { FaUserShield } from "react-icons/fa";
 import useAllUsers from "../../../Hooks/useAllUsers";
 import useAxiosPrivet from "../../../Hooks/useAxiosPrivet";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Users = () => {
   const [search, setSearch] = useState("");
@@ -36,6 +37,9 @@ const Users = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Education || Users</title>
+      </Helmet>
       <div className="p-4">
         <h4 className="text-3xl font-bold text-center mb-5 underline  underline-offset-4">
           All Users in the website

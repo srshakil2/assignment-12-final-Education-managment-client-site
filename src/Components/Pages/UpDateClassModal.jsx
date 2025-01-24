@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const UpDateClassModal = ({ value }) => {
   const axiosPrivet = useAxiosPrivet();
   const { _id, name, email, title, photoUrl, price, bio } = value || {};
-  // TODU: useDataId func er vitor giye api set korte hobe---
+
   const [, refetch] = useDataLoard();
   // Update button done
   const handelFormPost = (e) => {
@@ -19,7 +19,7 @@ const UpDateClassModal = ({ value }) => {
     axiosPrivet
       .patch(`/allclass/update/${id}`, newData)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
 
         if (res.data?.modifiedCount > 0) {
           Swal.fire({
@@ -34,7 +34,7 @@ const UpDateClassModal = ({ value }) => {
         e.target.reset();
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const ClassDetailsPage = () => {
@@ -12,6 +13,9 @@ const ClassDetailsPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Education || Details</title>
+      </Helmet>
       <div className="container mx-auto p-4">
         <div className="card bg-base-100 shadow-xl mx-auto w-full md:w-2/3 lg:w-1/2">
           <figure>

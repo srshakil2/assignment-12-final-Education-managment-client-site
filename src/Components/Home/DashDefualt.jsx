@@ -3,7 +3,7 @@ import { MainContext } from "../../Provider/Authcontext";
 
 const DashDefualt = () => {
   const { user } = useContext(MainContext);
-  console.log(user);
+  // console.log(user);
   return (
     <div>
       {/* section Defualt */}

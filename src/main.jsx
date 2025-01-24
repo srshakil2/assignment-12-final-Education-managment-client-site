@@ -12,7 +12,7 @@ import DashDefualt from "./Components/Home/DashDefualt";
 import AddClass from "./Components/Pages/AddClass";
 import MyClass from "./Components/Pages/MyClass";
 import Profile from "./Components/Pages/Profile";
-// tan stack query
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SeeDetails from "./Components/Pages/SeeDetails";
 import TeachOn from "./Components/TeachOn/TeachOn";
@@ -25,6 +25,9 @@ import ClassDetailsPage from "./Components/AllClass/ClassDetails/ClassDetailsPag
 import Prement from "./Components/AllClass/Prement/Prement";
 import MyEnrolls from "./Components/Pages/Student/MyEnrolls";
 import EnrollClassDetails from "./Components/Pages/Student/EnrollClassDetails";
+import Privet from "./Provider/Privet";
+import PrivetTeacher from "./Provider/PtivetTeacher";
+import PrivetAddmin from "./Provider/PrivetAddmin";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -45,21 +48,33 @@ const router = createBrowserRouter([
       {
         path: "/allclass/classdetails/:id",
         // privet
-        element: <ClassDetailsPage></ClassDetailsPage>,
+        element: (
+          <Privet>
+            <ClassDetailsPage></ClassDetailsPage>
+          </Privet>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
       },
       {
         path: "/payment/:id",
         // privet
-        element: <Prement></Prement>,
+        element: (
+          <Privet>
+            <Prement></Prement>
+          </Privet>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
       },
       {
         path: "/teachon",
         // privet
-        element: <TeachOn></TeachOn>,
+        element: (
+          <Privet>
+            <TeachOn></TeachOn>
+          </Privet>
+        ),
       },
     ],
   },
@@ -67,7 +82,11 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     // privet
-    element: <Dashboard></Dashboard>,
+    element: (
+      <Privet>
+        <Dashboard></Dashboard>
+      </Privet>
+    ),
     errorElement: <Error></Error>,
     children: [
       {
@@ -78,51 +97,87 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/addClass",
         // privet teacher
-        element: <AddClass></AddClass>,
+        element: (
+          <PrivetTeacher>
+            <AddClass></AddClass>
+          </PrivetTeacher>
+        ),
       },
       {
         path: "/dashboard/myClass",
         // privet teacher
-        element: <MyClass></MyClass>,
+        element: (
+          <PrivetTeacher>
+            <MyClass></MyClass>
+          </PrivetTeacher>
+        ),
       },
       {
         path: "/dashboard/myClass/:id",
         // privet teacher
-        element: <SeeDetails></SeeDetails>,
+        element: (
+          <PrivetTeacher>
+            <SeeDetails></SeeDetails>
+          </PrivetTeacher>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
       },
       {
         path: "/dashboard/teacherreq",
         // privet Addmin
-        element: <TeacherReq></TeacherReq>,
+        element: (
+          <PrivetAddmin>
+            <TeacherReq></TeacherReq>
+          </PrivetAddmin>
+        ),
       },
       {
         path: "/dashboard/users",
         // privet Addmin
-        element: <Users></Users>,
+        element: (
+          <PrivetAddmin>
+            <Users></Users>
+          </PrivetAddmin>
+        ),
       },
       {
         path: "/dashboard/allclasses",
         // privet Addmin
-        element: <AllClasses></AllClasses>,
+        element: (
+          <PrivetAddmin>
+            <AllClasses></AllClasses>
+          </PrivetAddmin>
+        ),
       },
       {
         path: "/dashboard/myenrollclass",
         // privet student .eikhane eita alada vabe student privet kora lagbe na
-        element: <MyEnrolls></MyEnrolls>,
+        element: (
+          <Privet>
+            <MyEnrolls></MyEnrolls>
+          </Privet>
+        ),
       },
       {
         path: "/dashboard/myenrollclass/:email",
         // privet student .eikhane eita alada vabe student privet kora lagbe na
-        element: <EnrollClassDetails></EnrollClassDetails>,
+        element: (
+          <Privet>
+            <EnrollClassDetails></EnrollClassDetails>
+          </Privet>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/onteach/${params.email}`),
       },
       {
         path: "/dashboard/profile",
         // privet sobar jonno
-        element: <Profile></Profile>,
+        element: (
+          <Privet>
+            <Profile></Profile>
+          </Privet>
+        ),
       },
     ],
   },

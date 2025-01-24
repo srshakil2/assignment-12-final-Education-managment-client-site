@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 const Error = () => {
@@ -7,6 +8,9 @@ const Error = () => {
   };
   return (
     <div className="space-y-7 mt-12">
+      <Helmet>
+        <title>Error</title>
+      </Helmet>
       <div>
         <h4 className="text-3xl font-bold text-black text-center">404</h4>
         <p className="text-center text-lg font-semibold mt-4">

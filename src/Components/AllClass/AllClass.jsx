@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useNavHome from "../../Hooks/useNavHome";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AllClass = () => {
   const [allClass, setAllClass] = useState([]);
@@ -17,6 +18,9 @@ const AllClass = () => {
 
   return (
     <div className="container mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Helmet>
+        <title>Education || Allclass</title>
+      </Helmet>
       {allClass.map((dataItem, i) => (
         <div key={i}>
           <div className="card bg-base-100 shadow-xl ">

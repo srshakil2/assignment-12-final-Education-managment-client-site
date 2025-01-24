@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import useAllUsers from "../../Hooks/useAllUsers";
 import { FaRegSmile } from "react-icons/fa";
 import useAxiosPrivet from "../../Hooks/useAxiosPrivet";
+import { Helmet } from "react-helmet";
 
 const TeachOn = () => {
   const [submiting, setSubmiting] = useState(false);
@@ -93,6 +94,9 @@ const TeachOn = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Education || Teaching</title>
+      </Helmet>
       {/* role student chacking */}
       {data?.role === "student" ? (
         <div

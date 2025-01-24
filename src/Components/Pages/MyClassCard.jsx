@@ -9,8 +9,6 @@ const MyClassCard = ({ item, setId }) => {
   const { _id, name, email, title, photoUrl, price, bio, enroll, status } =
     item || {};
 
-  // TODU: see dietails btn wer kaj hobe------
-
   // delete data
   const handelDelete = (id) => {
     const dataId = { id: id };

@@ -5,6 +5,7 @@ import { MainContext } from "../../Provider/Authcontext";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import useAxiosOpen from "../../Hooks/useAxiosOpen";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -69,6 +70,9 @@ const Login = () => {
   };
   return (
     <div className="hero min-h-screen ">
+      <Helmet>
+        <title>Education || Login</title>
+      </Helmet>
       <div className="card bg-base-100 shrink-0 shadow-2xl md:w-6/12">
         <p className="w-full text-3xl font-bold text-center mt-3">LogIn Now</p>
         <div onClick={googleLoginUser} className="btn mt-7 md:w-1/2 mx-auto ">

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { MainContext } from "../../Provider/Authcontext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AddClass = () => {
   const axiosPrivet = useAxiosPrivet();
@@ -55,6 +56,9 @@ const AddClass = () => {
   };
   return (
     <div className="">
+      <Helmet>
+        <title>Education || AddClass</title>
+      </Helmet>
       <div className="flex flex-col gap-3 items-center justify-center">
         <div className="w-[100px] h-[100px]">
           <img

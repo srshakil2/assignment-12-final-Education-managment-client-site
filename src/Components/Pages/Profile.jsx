@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { FaUserTag, FaEnvelope, FaPhone } from "react-icons/fa";
 import { MainContext } from "../../Provider/Authcontext";
 import useAxiosPrivet from "../../Hooks/useAxiosPrivet";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const [profile, setProfile] = useState({});
@@ -25,6 +26,9 @@ const Profile = () => {
   return (
     <>
       <div>
+        <Helmet>
+          <title>Education || Profile</title>
+        </Helmet>
         {/* max-w-sm md:max-w-md */}
         <div className="card bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg rounded-xl overflow-hidden hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-in-out animate-bounce-in p-6">
           {/* User Image */}

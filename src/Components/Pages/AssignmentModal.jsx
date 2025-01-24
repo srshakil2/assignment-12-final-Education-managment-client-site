@@ -7,7 +7,7 @@ const AssignmentModal = ({ loadData, setTotalAss, setTotalSubmition }) => {
   const axiosPrivet = useAxiosPrivet();
   const { email } = loadData || {};
   const [, refetch] = useDataLoard();
-  // TODU:modal
+  // modal
   const handelModal = (e) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());

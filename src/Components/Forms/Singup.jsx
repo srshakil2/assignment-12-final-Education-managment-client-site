@@ -6,6 +6,7 @@ import { updateProfile } from "firebase/auth";
 import auth from "../../firebase";
 import Swal from "sweetalert2";
 import useAxiosOpen from "../../Hooks/useAxiosOpen";
+import { Helmet } from "react-helmet";
 
 const Singup = () => {
   const axiosOpen = useAxiosOpen();
@@ -70,6 +71,9 @@ const Singup = () => {
   };
   return (
     <div className="hero min-h-screen ">
+      <Helmet>
+        <title>Education || SingUp</title>
+      </Helmet>
       <div className="card bg-base-100 shrink-0 shadow-2xl md:w-6/12">
         <div className="text-center mt-10 md:w-1/2 mx-auto">
           <p className="w-full text-3xl font-bold">Sing Up Now</p>

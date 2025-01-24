@@ -2,6 +2,7 @@ import { FaCheck, FaTimes } from "react-icons/fa";
 import useAxiosPrivet from "../../../Hooks/useAxiosPrivet";
 import Swal from "sweetalert2";
 import useAllsoGet from "../../../Hooks/useAllsoGet";
+import { Helmet } from "react-helmet";
 const TeacherReq = () => {
   // tanstec query
   const [data, refetch] = useAllsoGet("/addteaches");
@@ -55,6 +56,9 @@ const TeacherReq = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Education || Req</title>
+      </Helmet>
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold mb-7 text-center underline underline-offset-8">
           Teacher Requests

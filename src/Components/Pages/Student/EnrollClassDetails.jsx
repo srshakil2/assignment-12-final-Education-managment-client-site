@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { MainContext } from "../../../Provider/Authcontext";
 import { register } from "swiper/element";
+import { Helmet } from "react-helmet";
 
 const EnrollClassDetails = () => {
   // modal
@@ -79,6 +80,9 @@ const EnrollClassDetails = () => {
   //   modal
   return (
     <div>
+      <Helmet>
+        <title>Education || Details</title>
+      </Helmet>
       {/* rating modal */}
 
       <div className="navbar bg-gray-800 text-white p-4 mb-4">

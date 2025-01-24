@@ -2,6 +2,7 @@ import useAllsoGet from "../../../Hooks/useAllsoGet";
 import { FaCheck, FaTimes, FaChartBar } from "react-icons/fa";
 import useAxiosPrivet from "../../../Hooks/useAxiosPrivet";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AllClasses = () => {
   const [data, refetch] = useAllsoGet("/allclass");
@@ -75,6 +76,9 @@ const AllClasses = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Education || AddminClass</title>
+      </Helmet>
       <div className="p-4">
         <h1 className="text-xl md:text-2xl font-bold text-center mb-6">
           All Class Request

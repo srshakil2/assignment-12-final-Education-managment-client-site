@@ -9,9 +9,9 @@ import useAxiosPrivet from "../../Hooks/useAxiosPrivet";
 import { GiTeacher } from "react-icons/gi";
 import { HiUserGroup } from "react-icons/hi";
 import { MdLibraryAdd } from "react-icons/md";
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
-  // TODU : kal korbo addmin dashbord er kaj
   const { user } = useContext(MainContext);
   const [admin, setAdmin] = useState({});
   const axiosPrivet = useAxiosPrivet();
@@ -30,6 +30,9 @@ const Dashboard = () => {
   }, [user]);
   return (
     <div className="grid grid-cols-7">
+      <Helmet>
+        <title>Education || DashBoard</title>
+      </Helmet>
       {/* section link for dashboard */}
       <section className="col-span-2 lg:col-span-1 bg-indigo-900 h-screen p-3 md:pl-5 pt-10 text-white space-y-5">
         {/* home sobar jonno */}

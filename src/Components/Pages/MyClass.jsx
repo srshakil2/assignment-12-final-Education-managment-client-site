@@ -3,6 +3,7 @@ import useDataLoard from "../../Hooks/useDataLoard";
 import MyClassCard from "./MyClassCard";
 import UpDateClassModal from "./UpDateClassModal";
 import useAxiosPrivet from "../../Hooks/useAxiosPrivet";
+import { Helmet } from "react-helmet";
 
 const MyClass = () => {
   const [id, setId] = useState("");
@@ -19,12 +20,15 @@ const MyClass = () => {
         setValue(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, [id]);
 
   return (
     <>
+      <Helmet>
+        <title>Education || MyClass</title>
+      </Helmet>
       <div className="grid lg:grid-cols-3">
         {data.map((item, i) => (
           <MyClassCard key={i} item={item} setId={setId}></MyClassCard>

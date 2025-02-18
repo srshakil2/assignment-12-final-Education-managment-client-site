@@ -223,7 +223,7 @@ const TeachOn = () => {
               <div className="flex justify-center items-center text-6xl text-blue-600 mb-4">
                 {<FaRegSmile />}
               </div>
-              <h2 className="card-title text-2xl font-bold text-gray-800 mb-2 ">
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">
                 Welcome!
               </h2>
               <p className="text-gray-600">

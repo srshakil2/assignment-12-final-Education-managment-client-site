@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MainContext } from "../../Provider/Authcontext";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
@@ -73,8 +73,17 @@ const Login = () => {
       <Helmet>
         <title>Education || Login</title>
       </Helmet>
+
       <div className="card bg-base-100 shrink-0 shadow-2xl md:w-6/12">
         <p className="w-full text-3xl font-bold text-center mt-3">LogIn Now</p>
+        <div className="text-center mt-5">
+          <Link
+            to={"/"}
+            className="border-2 p-2 rounded-lg text-lg bg-gray-100 hover:bg-gray-200"
+          >
+            Back Home
+          </Link>
+        </div>
         <div onClick={googleLoginUser} className="btn mt-7 md:w-1/2 mx-auto ">
           <FcGoogle className="text-3xl"></FcGoogle>
           <span className="text-xl">Google LogIn</span>

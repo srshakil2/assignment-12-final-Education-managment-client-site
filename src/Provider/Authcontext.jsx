@@ -12,6 +12,7 @@ import auth from "../firebase";
 
 export const MainContext = createContext();
 const Authcontext = ({ children }) => {
+  const [themeColor, setThemeColor] = useState("");
   const [user, setUser] = useState(null);
   const [loding, setLoding] = useState(true);
   // console.log(user);
@@ -57,6 +58,8 @@ const Authcontext = ({ children }) => {
     };
   }, []);
   const data = {
+    themeColor,
+    setThemeColor,
     user,
     setUser,
     loding,

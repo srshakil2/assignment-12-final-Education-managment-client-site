@@ -38,7 +38,9 @@ const AllClass = () => {
               <p className="text-sm text-gray-600">
                 Posted by: {dataItem?.name}
               </p>
-              <p className="text-sm text-gray-600">{dataItem?.bio}</p>
+              <p className="text-sm text-gray-600">
+                {dataItem?.bio.slice(1, 100)}...
+              </p>
               <div className="flex justify-between items-center mt-4">
                 <span className="text-lg font-semibold text-green-600">
                   Price : ${dataItem?.price}

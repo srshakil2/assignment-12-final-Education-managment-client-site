@@ -70,11 +70,7 @@ const router = createBrowserRouter([
       {
         path: "/teachon",
         // privet
-        element: (
-          <Privet>
-            <TeachOn></TeachOn>
-          </Privet>
-        ),
+        element: <TeachOn></TeachOn>,
       },
     ],
   },

@@ -11,6 +11,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 const Cards = () => {
   const [sortedData, setSortedData] = useState([]);
+
   const [data, refetch] = useHomePageAll("/allclass");
 
   useEffect(() => {
@@ -29,8 +30,8 @@ const Cards = () => {
         Popular Courses
       </h2>
       {/* grid md:grid-cols-2 lg:grid-cols-3 gap-5 */}
-      <div className="">
-        <Swiper
+      <div className="grid sm:grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-7">
+        {/* <Swiper
           slidesPerView={4}
           spaceBetween={30}
           pagination={{
@@ -41,7 +42,7 @@ const Cards = () => {
             disableOnInteraction: false,
           }}
           modules={[Autoplay, Pagination]}
-          className="mySwiper "
+          className="mySwiper"
         >
           {sortedData.map((popularClass, i) => (
             <SwiperSlide key={i}>
@@ -50,7 +51,12 @@ const Cards = () => {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
+        </Swiper> */}
+        {sortedData.map((popularClass, i) => (
+          <div>
+            <Card key={i} popularClass={popularClass}></Card>
+          </div>
+        ))}
       </div>
     </div>
   );

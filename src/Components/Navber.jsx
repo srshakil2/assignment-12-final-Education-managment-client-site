@@ -51,7 +51,7 @@ const Navber = () => {
           </ul>
         </div>
         {/* Logo website */}
-        <div>
+        <Link to={"/"}>
           <div className="flex items-center justify-center">
             <img
               className="w-[50px] h-full bg-white rounded-xl"
@@ -62,7 +62,7 @@ const Navber = () => {
           <h4 className="uppercase text-xl font-bold text-center text-white">
             EduManage
           </h4>
-        </div>
+        </Link>
       </div>
       {/* Larger divice */}
       <div className="navbar-center hidden lg:flex">
@@ -83,7 +83,7 @@ const Navber = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img alt="" defaultChecked src={user?.photoURL} />
+                  <img alt="user img" defaultChecked src={user?.photoURL} />
                 </div>
               </div>
               <ul

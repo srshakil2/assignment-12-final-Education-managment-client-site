@@ -7,15 +7,18 @@ const Card = ({ popularClass }) => {
     popularClass || {};
 
   const heading = title.slice(0, 20);
-  const description = bio.slice(0, 70);
+  const description = bio.slice(0, 65);
   // Tudo button: viwe ditails
+  // max-w-sm
   return (
-    <div className="flex-shrink-0 w-full max-w-sm  bg-white shadow-md rounded-lg  transition-transform transform hover:scale-105  duration-300">
-      <img
-        src={photoUrl}
-        alt={name}
-        className="w-full  object-cover rounded-t-xl"
-      />
+    <div className="flex-shrink-0 w-full bg-white shadow-md rounded-lg  transition-transform transform hover:scale-105  duration-300">
+      <div className="h-[280px]">
+        <img
+          src={photoUrl}
+          alt={name}
+          className="w-full h-full object-cover rounded-t-xl"
+        />
+      </div>
       <div className="p-4">
         <h3 className="text-xl font-semibold text-gray-800">{heading}...</h3>
         <p className="text-sm text-gray-600 my-2">Instructor: {name}</p>

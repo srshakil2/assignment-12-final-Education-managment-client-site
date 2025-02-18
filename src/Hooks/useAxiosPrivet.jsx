@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPrivet = axios.create({
-  baseURL: "https://education-server-site.vercel.app",
+  baseURL: "http://localhost:5000",
 });
 
 const useAxiosPrivet = () => {

@@ -2,7 +2,7 @@ import React from "react";
 
 const ExtraTwo = ({ freeClass, totalFree }) => {
   return (
-    <div className="md:w-2/3 mx-auto">
+    <div className="">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

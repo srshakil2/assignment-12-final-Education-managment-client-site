@@ -26,7 +26,7 @@ const Cards = () => {
 
   return (
     <div className="">
-      <h2 className="text-3xl font-bold text-center my-10 text-gray-800">
+      <h2 className="text-3xl font-bold text-center my-7 text-gray-800">
         Popular Courses
       </h2>
       {/* grid md:grid-cols-2 lg:grid-cols-3 gap-5 */}

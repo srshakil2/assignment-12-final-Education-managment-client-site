@@ -33,7 +33,7 @@ const HomeLayOut = () => {
         <Banner></Banner>
       </section>
       {/* highlight section */}
-      <section>
+      <section className="w-11/12 mx-auto mt-8">
         <Highlight></Highlight>
       </section>
 
@@ -43,35 +43,35 @@ const HomeLayOut = () => {
       </section>
       {/* User feedback database */}
       <section className="w-11/12 mx-auto mt-16">
-        <h2 className="text-4xl font-bold text-center mb-10">
+        <h2 className="text-4xl font-bold text-center mb-2">
           Users FeedBack Here
         </h2>
         <Feedback></Feedback>
       </section>
       {/* total users enrollment etc */}
-      <section className="w-11/12 mx-auto mt-16">
-        <h4 className="text-4xl font-bold text-center mb-10">
+      <section className="w-11/12 mx-auto mt-10">
+        <h4 className="text-4xl font-bold text-center mb-7">
           Total Class and Enrollment
         </h4>
         <TotalUsers></TotalUsers>
       </section>
       {/* extra two sextion */}
-      <section className="w-11/12 mx-auto mt-16">
-        <h4 className="text-4xl font-bold text-center mb-4">
+      <section className="w-11/12 mx-auto mt-12">
+        <h4 className="text-4xl font-bold text-center mb-3">
           Unlock {freeClass?.length} Premium Add-ons at <br /> no cost
         </h4>
-        <p className="text-center mb-10">
+        <p className="text-center mb-7">
           Save a total of $500 per year compared with purchasing all LearnPress
           Premium Add-ons.
         </p>
         <ExtraTwo freeClass={freeClass} totalFree={totalFree}></ExtraTwo>
       </section>
       {/* Become a teaching today */}
-      <section className="w-11/12 mx-auto mt-16">
+      <section className="w-11/12 mx-auto mt-10">
         <BecomeTeaching></BecomeTeaching>
       </section>
       {/* extra one */}
-      <section className="w-11/12 mx-auto mt-16 mb-10">
+      <section className="w-11/12 mx-auto mt-10 mb-10">
         <ExtraOne></ExtraOne>
       </section>
     </div>

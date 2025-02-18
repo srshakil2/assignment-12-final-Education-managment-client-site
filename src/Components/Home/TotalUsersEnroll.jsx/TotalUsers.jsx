@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useHomePageAll from "../../../Hooks/useHomePageAll";
 import { FaUsers } from "react-icons/fa";
 import useAxiosOpen from "../../../Hooks/useAxiosOpen";
+import { MdClass } from "react-icons/md";
 
 const TotalUsers = () => {
   const [users, setUsers] = useState([]);
@@ -36,7 +37,7 @@ const TotalUsers = () => {
         </div>
         <div className="flex items-center gap-3 bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl p-4 text-3xl font-semibold">
           <p className="bg-green-500 rounded-full p-2">
-            <FaUsers />
+            <MdClass />
           </p>
           <h3>Total Class: {totalClass?.length}</h3>
         </div>

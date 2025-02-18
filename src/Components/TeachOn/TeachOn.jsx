@@ -99,13 +99,7 @@ const TeachOn = () => {
       </Helmet>
       {/* role student chacking */}
       {data?.role === "student" ? (
-        <div
-          className={
-            reject?.status
-              ? "hidden"
-              : "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
-          }
-        >
+        <div className={reject?.status ? "hidden" : " w-11/12 mx-auto py-10"}>
           <h1 className="text-3xl font-semibold text-center mb-6">
             Submit Your Info
           </h1>

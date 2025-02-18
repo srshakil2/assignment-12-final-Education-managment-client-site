@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const BecomeTeaching = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center bg-gray-100 p-2 md:p-5 rounded-lg shadow-lg gap-7">
+    <div className="flex flex-col md:flex-row items-center justify-center    gap-7">
       {/* Left Side - Image */}
       <div className="w-full md:w-1/2 mb-6 md:mb-0">
         <img

@@ -1,7 +1,7 @@
 const ExtraOne = () => {
   return (
     <div>
-      <div className="mb-10 text-center">
+      <div className="mb-6 text-center">
         <h2 className="text-4xl font-semibold mb-5 uppercase">
           frequently asked quetions
         </h2>
@@ -9,7 +9,7 @@ const ExtraOne = () => {
           Here are some frequently asked questions.
         </p>
       </div>
-      <section className=" p-8 bg-indigo-200 rounded-lg md:w-2/3 mx-auto">
+      <section className="">
         <div className="collapse collapse-plus bg-yellow-50 mb-5">
           <input type="radio" name="my-accordion-3" defaultChecked />
           <div className="collapse-title text-lg font-medium">

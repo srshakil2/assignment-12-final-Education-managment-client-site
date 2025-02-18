@@ -5,7 +5,7 @@ const FeedbackCard = ({ item }) => {
   const heding = title.slice(0, 25);
   //   console.log(bio);
   return (
-    <div className="carousel-item  items-center justify-center ml-5 p-2">
+    <div className="carousel-item  items-center justify-center ml-5 py-5">
       <div className="flex flex-col justify-center items-center  bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl p-5">
         <div className="w-[100px] h-[100px] ">
           <img

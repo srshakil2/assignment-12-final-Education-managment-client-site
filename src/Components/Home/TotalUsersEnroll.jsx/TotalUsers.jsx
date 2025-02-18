@@ -26,8 +26,8 @@ const TotalUsers = () => {
       });
   }, []);
   return (
-    <div className="grid md:grid-cols-3">
-      <div className="col-span-1 space-y-7 mr-5 lg:ml-14">
+    <div className="grid md:grid-cols-4 gap-7">
+      <div className="col-span-2 space-y-7 ">
         <div className="flex items-center gap-3 bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl p-4 text-3xl font-semibold">
           <p className="bg-green-500 rounded-full p-2">
             <FaUsers />
@@ -47,7 +47,7 @@ const TotalUsers = () => {
           <h3>Total Enrollment: {totalEnroll}</h3>
         </div>
       </div>
-      <div className="col-span-2 lg:w-2/3 lg:h-[300px] mx-auto transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+      <div className="col-span-2 w-full lg:h-[300px] mx-auto transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
         <img
           className="w-full h-full rounded-md"
           src="https://i.ibb.co.com/fM8MjFD/baim-hanif-p-YWu-OMhtc6k-unsplash.jpg"

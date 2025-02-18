@@ -7,7 +7,7 @@ const Feedback = () => {
 
   return (
     <div>
-      <div className="carousel rounded-box">
+      <div className="carousel rounded-box ">
         {data.map((item, i) => (
           <FeedbackCard key={i} item={item}></FeedbackCard>
         ))}

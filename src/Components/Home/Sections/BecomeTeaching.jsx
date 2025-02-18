@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { MainContext } from "../../../Provider/Authcontext";
 
 const BecomeTeaching = () => {
+  const { themeColor } = useContext(MainContext);
   return (
     <div className="flex flex-col md:flex-row items-center justify-center    gap-7">
       {/* Left Side - Image */}
@@ -14,11 +17,17 @@ const BecomeTeaching = () => {
       </div>
 
       {/* Right Side - Content and button */}
-      <div className="w-full md:w-1/2 text-center md:text-left space-y-10">
-        <h2 className="text-2xl md:text-4xl font-bold text-gray-800  animate-fadeInUp">
+      <div
+        className={
+          themeColor === "light"
+            ? "w-full md:w-1/2 text-center md:text-left space-y-10"
+            : "w-full md:w-1/2 text-center md:text-left space-y-10 text-white"
+        }
+      >
+        <h2 className="text-2xl md:text-4xl font-bold   animate-fadeInUp">
           Become an Instructor
         </h2>
-        <p className="text-gray-600 md:text-base mb-6 animate-fadeInUp">
+        <p className="md:text-base mb-6 animate-fadeInUp">
           Share your knowledge and skills with millions of learners around the
           world. Empower the next generation by teaching what you love.
         </p>

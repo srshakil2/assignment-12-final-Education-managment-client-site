@@ -8,10 +8,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination } from "swiper/modules";
+import { MainContext } from "../../../Provider/Authcontext";
 
 const Cards = () => {
   const [sortedData, setSortedData] = useState([]);
   const [sorted, setSorted] = useState("");
+  const { themeColor } = useContext(MainContext);
 
   const [data, refetch] = useHomePageAll("/allclass");
 
@@ -37,10 +39,22 @@ const Cards = () => {
 
   return (
     <div className="">
-      <h2 className="text-3xl font-bold text-center my-3 text-gray-800">
+      <h2
+        className={
+          themeColor === "light"
+            ? "text-3xl font-bold text-center my-3 text-gray-800"
+            : "text-3xl font-bold text-center my-3 text-white"
+        }
+      >
         Popular Courses
       </h2>
-      <div className="flex gap-3 items-center justify-center mb-6">
+      <div
+        className={
+          themeColor === "light"
+            ? "flex gap-3 items-center justify-center mb-6"
+            : "flex gap-3 items-center justify-center mb-6 text-white"
+        }
+      >
         <h4 className="text-xl font-semibold text-nowrap">Sort By Enroll:</h4>
         <select
           onChange={(e) => setSorted(e.target.value)}
@@ -76,7 +90,11 @@ const Cards = () => {
         </Swiper> */}
         {sortedData.map((popularClass, i) => (
           <div>
-            <Card key={i} popularClass={popularClass}></Card>
+            <Card
+              key={i}
+              popularClass={popularClass}
+              themeColor={themeColor}
+            ></Card>
           </div>
         ))}
       </div>

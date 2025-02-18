@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { MainContext } from "../../../Provider/Authcontext";
 
 const ClassDetailsPage = () => {
   const navigate = useNavigate();
   const loadData = useLoaderData();
+  const { themeColor } = useContext(MainContext);
   const { _id, name, email, title, price, bio, enroll, photoUrl } =
     loadData || {};
 
@@ -17,7 +20,13 @@ const ClassDetailsPage = () => {
         <title>Education || Details</title>
       </Helmet>
       <div className="container mx-auto p-4">
-        <div className="card bg-base-100 shadow-xl mx-auto w-full md:w-2/3 lg:w-3/5">
+        <div
+          className={
+            themeColor === "light"
+              ? "card bg-base-100 shadow-xl mx-auto w-full md:w-2/3 lg:w-3/5"
+              : "card bg-gray-800 shadow-xl mx-auto w-full md:w-2/3 lg:w-3/5 text-white"
+          }
+        >
           <figure>
             <img
               src={photoUrl}
@@ -39,12 +48,12 @@ const ClassDetailsPage = () => {
               <li>Motivation & Competition.</li>
             </ul>
 
-            <p className="text-gray-700 mt-4">{bio}</p>
+            <p className=" mt-4">Description: {bio}</p>
             <div className="flex justify-between items-center mt-4">
               <span className="text-lg font-semibold text-green-600">
                 $ {price}
               </span>
-              <span className="text-sm text-gray-500">Enrolled: {enroll}</span>
+              <span className="text-sm">Enrolled: {enroll}</span>
             </div>
             {/* prement modal btn */}
             <div className="card-actions justify-end mt-6">

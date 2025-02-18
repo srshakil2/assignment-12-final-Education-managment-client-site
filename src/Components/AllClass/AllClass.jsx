@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useNavHome from "../../Hooks/useNavHome";
 import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { MainContext } from "../../Provider/Authcontext";
 
 const AllClass = () => {
   const [allClass, setAllClass] = useState([]);
   const [sorted, setSorted] = useState("");
+  const { themeColor } = useContext(MainContext);
   const [data, refetch] = useNavHome();
   //   console.log(allClass);
   useEffect(() => {
@@ -34,7 +36,13 @@ const AllClass = () => {
       <Helmet>
         <title>Education || Allclass</title>
       </Helmet>
-      <div className="flex gap-3 items-center justify-center mb-6 mt-10">
+      <div
+        className={
+          themeColor === "light"
+            ? "flex gap-3 items-center justify-center mb-6 mt-10"
+            : "flex gap-3 items-center justify-center mb-6 mt-10 text-white"
+        }
+      >
         <h4 className="text-xl font-semibold text-nowrap">Sort By Enroll:</h4>
         <select
           onChange={(e) => setSorted(e.target.value)}
@@ -48,7 +56,13 @@ const AllClass = () => {
       <div className="w-11/12  mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
         {allClass.map((dataItem, i) => (
           <div key={i}>
-            <div className="card bg-base-100 shadow-xl ">
+            <div
+              className={
+                themeColor === "light"
+                  ? "card bg-base-100 shadow-xl "
+                  : "card bg-gray-700 shadow-xl text-white"
+              }
+            >
               <figure>
                 <img
                   src={dataItem?.photoUrl}
@@ -60,19 +74,13 @@ const AllClass = () => {
                 <h2 className="card-title text-lg font-bold">
                   {dataItem?.title}
                 </h2>
-                <p className="text-sm text-gray-600">
-                  Posted by: {dataItem?.name}
-                </p>
-                <p className="text-sm text-gray-600">
-                  {dataItem?.bio.slice(1, 100)}...
-                </p>
+                <p className="text-sm">Posted by: {dataItem?.name}</p>
+                <p className="text-sm">{dataItem?.bio.slice(1, 100)}...</p>
                 <div className="flex justify-between items-center mt-4">
                   <span className="text-lg font-semibold text-green-600">
                     Price : ${dataItem?.price}
                   </span>
-                  <span className="text-sm text-gray-500">
-                    Enrolled: {dataItem?.enroll}
-                  </span>
+                  <span className="text-sm">Enrolled: {dataItem?.enroll}</span>
                 </div>
                 <NavLink
                   to={`/allclass/classdetails/${dataItem?._id}`}

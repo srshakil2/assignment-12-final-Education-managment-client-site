@@ -1,6 +1,16 @@
+import { useContext } from "react";
+import { MainContext } from "../Provider/Authcontext";
+
 const Footer = () => {
+  const { themeColor } = useContext(MainContext);
   return (
-    <footer className="footer bg-base-300 text-base-content p-10">
+    <footer
+      className={
+        themeColor === "light"
+          ? "footer bg-base-300 text-black p-10"
+          : "footer bg-base-300 p-10 text-white"
+      }
+    >
       <nav>
         <h6 className="footer-title">Services</h6>
         <a className="link link-hover">Branding</a>

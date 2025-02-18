@@ -12,7 +12,7 @@ const CheckoutForm = ({ data }) => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosPrivet = useAxiosPrivet();
-  const { user } = useContext(MainContext);
+  const { user, themeColor } = useContext(MainContext);
 
   const username = user?.displayName;
   const useremail = user?.email;
@@ -104,7 +104,13 @@ const CheckoutForm = ({ data }) => {
   };
 
   return (
-    <div className="lg:w-5/12 my-40 mx-auto card shadow-xl p-10">
+    <div
+      className={
+        themeColor === "light"
+          ? "lg:w-5/12 my-40 mx-auto card shadow-xl p-10"
+          : "lg:w-5/12 my-40 mx-auto card shadow-xl p-10 bg-gray-800 text-white"
+      }
+    >
       <div className="flex flex-col mb-8">
         <label className="text-lg font-semibold p-1">amaunt Hare</label>
         <input

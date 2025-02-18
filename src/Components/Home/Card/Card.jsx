@@ -1,7 +1,7 @@
 import { FaDollarSign, FaEnvelope, FaUsers } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-const Card = ({ popularClass }) => {
+const Card = ({ popularClass, themeColor }) => {
   //   console.log(popularClass);
   const { name, email, photoUrl, bio, price, enroll, title } =
     popularClass || {};
@@ -31,12 +31,20 @@ const Card = ({ popularClass }) => {
         <p className="flex items-center text-sm text-gray-600 my-1">
           <FaDollarSign className="mr-2" /> Price: ${price}
         </p>
-        <p>{description}...</p>
+        <p className={themeColor === "light" ? "" : "text-black"}>
+          {description}...
+        </p>
       </div>
       {/* to={`/allclass/classdetails/${dataItem?._id}` */}
       <div className="p-5">
         <NavLink to={`/allclass/classdetails/${popularClass?._id}`}>
-          <button className=" btn w-full text-lg bg-indigo-400 hover:bg-indigo-600">
+          <button
+            className={
+              themeColor === "light"
+                ? " btn w-full text-lg bg-indigo-400 hover:bg-indigo-600"
+                : " btn w-full text-lg bg-indigo-400 hover:bg-indigo-600 text-white"
+            }
+          >
             Enroll
           </button>
         </NavLink>

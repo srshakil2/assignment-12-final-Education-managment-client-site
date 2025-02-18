@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Banner from "../Shared/Banner";
 import Highlight from "../Highligth/Highlight";
 import Cards from "./Card/Cards";
@@ -8,10 +8,12 @@ import BecomeTeaching from "./Sections/BecomeTeaching";
 import ExtraOne from "./Sections/ExtraOne";
 import ExtraTwo from "./Sections/ExtraTwo";
 import useAxiosOpen from "../../Hooks/useAxiosOpen";
+import { MainContext } from "../../Provider/Authcontext";
 
 const HomeLayOut = () => {
   const [totalFree, setTotalFree] = useState(0);
   const [freeClass, setFreeClass] = useState([]);
+  const { themeColor } = useContext(MainContext);
   const axiosOpen = useAxiosOpen();
   useEffect(() => {
     axiosOpen
@@ -42,21 +44,45 @@ const HomeLayOut = () => {
         <Cards></Cards>
       </section>
       {/* User feedback database */}
-      <section className="w-11/12 mx-auto mt-16">
-        <h2 className="text-4xl font-bold text-center mb-2">
+      <section
+        className={
+          themeColor === "light"
+            ? "w-11/12 mx-auto mt-16"
+            : "w-11/12 mx-auto mt-16 text-black"
+        }
+      >
+        <h2
+          className={
+            themeColor === "light"
+              ? "text-4xl font-bold text-center mb-2"
+              : "text-4xl font-bold text-center mb-2 text-white"
+          }
+        >
           Users FeedBack Here
         </h2>
         <Feedback></Feedback>
       </section>
       {/* total users enrollment etc */}
       <section className="w-11/12 mx-auto mt-10">
-        <h4 className="text-4xl font-bold text-center mb-7">
+        <h4
+          className={
+            themeColor === "light"
+              ? "text-4xl font-bold text-center mb-7"
+              : "text-4xl font-bold text-center mb-7 text-white"
+          }
+        >
           Total Class and Enrollment
         </h4>
         <TotalUsers></TotalUsers>
       </section>
       {/* extra two sextion */}
-      <section className="w-11/12 mx-auto mt-12">
+      <section
+        className={
+          themeColor === "light"
+            ? "w-11/12 mx-auto mt-12"
+            : "w-11/12 mx-auto mt-12 text-white"
+        }
+      >
         <h4 className="text-4xl font-bold text-center mb-3">
           Unlock {freeClass?.length} Premium Add-ons at <br /> no cost
         </h4>

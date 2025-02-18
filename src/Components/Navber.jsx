@@ -41,7 +41,7 @@ const Navber = () => {
     </>
   );
 
-  console.log(themeColor);
+  // console.log(themeColor);
   return (
     <div className="navbar bg-indigo-800 px-10">
       {/* Small device */}

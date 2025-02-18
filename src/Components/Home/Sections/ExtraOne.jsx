@@ -1,7 +1,17 @@
+import { useContext } from "react";
+import { MainContext } from "../../../Provider/Authcontext";
+
 const ExtraOne = () => {
+  const { themeColor } = useContext(MainContext);
   return (
     <div>
-      <div className="mb-6 text-center">
+      <div
+        className={
+          themeColor === "light"
+            ? "mb-6 text-center"
+            : "mb-6 text-center text-white"
+        }
+      >
         <h2 className="text-4xl font-semibold mb-5 uppercase">
           frequently asked quetions
         </h2>
@@ -9,7 +19,7 @@ const ExtraOne = () => {
           Here are some frequently asked questions.
         </p>
       </div>
-      <section className="">
+      <section className={themeColor === "light" ? "" : "text-black"}>
         <div className="collapse collapse-plus bg-yellow-50 mb-5">
           <input type="radio" name="my-accordion-3" defaultChecked />
           <div className="collapse-title text-lg font-medium">

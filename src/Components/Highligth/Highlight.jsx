@@ -1,7 +1,17 @@
+import { useContext } from "react";
+import { MainContext } from "../../Provider/Authcontext";
+
 const Highlight = () => {
+  const { themeColor } = useContext(MainContext);
   return (
     <div>
-      <p className="text-center text-lg font-semibold">
+      <p
+        className={
+          themeColor === "light"
+            ? "text-center text-lg font-semibold"
+            : "text-center text-lg font-semibold text-white"
+        }
+      >
         Trusted over 20,000 <br /> companise and millions of learners arund the
         world.
       </p>

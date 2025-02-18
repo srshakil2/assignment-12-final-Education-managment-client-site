@@ -13,7 +13,7 @@ const Singup = () => {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
-  const { handelSingUp } = useContext(MainContext);
+  const { handelSingUp, themeColor } = useContext(MainContext);
   const {
     register,
     handleSubmit,
@@ -214,7 +214,14 @@ const Singup = () => {
           </div>
           {/* singup btn */}
           <div className="form-control mt-6">
-            <button type="submit" className="btn text-lg bg-indigo-400">
+            <button
+              type="submit"
+              className={
+                themeColor === "light"
+                  ? "btn text-lg bg-indigo-400"
+                  : "btn text-lg bg-indigo-400 hover:bg-indigo-600 text-white"
+              }
+            >
               Sing Up
             </button>
           </div>

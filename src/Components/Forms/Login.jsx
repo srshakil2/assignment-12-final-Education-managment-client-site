@@ -10,7 +10,9 @@ import { Helmet } from "react-helmet";
 const Login = () => {
   const navigate = useNavigate();
   const axiosOpen = useAxiosOpen();
-  const { handelLogin, handelGoogleLogin } = useContext(MainContext);
+  const { handelLogin, handelGoogleLogin, themeColor } =
+    useContext(MainContext);
+  // console.log(themeColor);
   const {
     register,
     handleSubmit,
@@ -69,22 +71,41 @@ const Login = () => {
       });
   };
   return (
-    <div className="hero min-h-screen ">
+    <div className="hero min-h-screen">
       <Helmet>
         <title>Education || Login</title>
       </Helmet>
 
       <div className="card bg-base-100 shrink-0 shadow-2xl md:w-6/12">
-        <p className="w-full text-3xl font-bold text-center mt-3">LogIn Now</p>
+        <p
+          className={
+            themeColor === "light"
+              ? "w-full text-3xl font-bold text-center mt-3"
+              : "w-full text-3xl font-bold text-center text-white mt-3"
+          }
+        >
+          LogIn Now
+        </p>
         <div className="text-center mt-5">
           <Link
             to={"/"}
-            className="border-2 p-2 rounded-lg text-lg bg-gray-100 hover:bg-gray-200"
+            className={
+              themeColor === "light"
+                ? "border-2 p-2 rounded-lg text-lg bg-gray-100 hover:bg-gray-200"
+                : "border-0 p-2 rounded-lg text-lg bg-gray-700 hover:bg-gray-900 text-white"
+            }
           >
             Back Home
           </Link>
         </div>
-        <div onClick={googleLoginUser} className="btn mt-7 md:w-1/2 mx-auto ">
+        <div
+          onClick={googleLoginUser}
+          className={
+            themeColor === "light"
+              ? "btn mt-7 md:w-1/2 mx-auto "
+              : "btn bg-gray-700 mt-7 md:w-1/2 mx-auto text-white"
+          }
+        >
           <FcGoogle className="text-3xl"></FcGoogle>
           <span className="text-xl">Google LogIn</span>
         </div>
@@ -92,13 +113,25 @@ const Login = () => {
           {/* Email */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Email</span>
+              <span
+                className={
+                  themeColor === "light"
+                    ? "label-text"
+                    : "label-text text-white"
+                }
+              >
+                Email
+              </span>
             </label>
             <input
               type="email"
               placeholder="email"
               {...register("email", { required: true })}
-              className="input input-bordered"
+              className={
+                themeColor === "light"
+                  ? "input input-bordered"
+                  : "input input-bordered text-white"
+              }
             />
             {errors?.email && (
               <span className="text-sm text-red-500">
@@ -109,13 +142,25 @@ const Login = () => {
           {/* password */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Password</span>
+              <span
+                className={
+                  themeColor === "light"
+                    ? "label-text"
+                    : "label-text text-white"
+                }
+              >
+                Password
+              </span>
             </label>
             <input
               type="password"
               placeholder="password"
               {...register("password", { required: true })}
-              className="input input-bordered"
+              className={
+                themeColor === "light"
+                  ? "input input-bordered"
+                  : "input input-bordered text-white"
+              }
             />
             {errors?.password && (
               <span className="text-sm text-red-500">
@@ -123,20 +168,34 @@ const Login = () => {
               </span>
             )}
             <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
+              <a
+                href="#"
+                className={
+                  themeColor === "light"
+                    ? "label-text-alt link link-hover"
+                    : "label-text-alt link link-hover text-white"
+                }
+              >
                 Forgot password?
               </a>
             </label>
           </div>
           {/* login btn */}
           <div className="form-control mt-6">
-            <button type="submit" className="btn text-lg bg-indigo-400">
+            <button
+              type="submit"
+              className={
+                themeColor === "light"
+                  ? "btn text-lg bg-indigo-400 hover:bg-indigo-600"
+                  : "btn text-lg bg-indigo-400 hover:bg-indigo-600 text-white"
+              }
+            >
               Login
             </button>
           </div>
         </form>
         {/* create accaun singup link */}
-        <div>
+        <div className={themeColor === "light" ? "text-black" : "text-white"}>
           <p className="px-7 pb-4 -mt-5 font-semibold">
             Don't Have account pless?
             <NavLink

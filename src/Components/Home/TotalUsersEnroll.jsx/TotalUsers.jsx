@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useHomePageAll from "../../../Hooks/useHomePageAll";
 import { FaUsers } from "react-icons/fa";
 import useAxiosOpen from "../../../Hooks/useAxiosOpen";
 import { MdClass } from "react-icons/md";
+import { MainContext } from "../../../Provider/Authcontext";
 
 const TotalUsers = () => {
   const [users, setUsers] = useState([]);
   const [totalClass, setTotalClass] = useState([]);
   const [totalEnroll, setTotalEnroll] = useState(0);
+  const { themeColor } = useContext(MainContext);
   const [data, refetch] = useHomePageAll("/total/users/class/enroll");
   const axiosOpen = useAxiosOpen();
   //   console.log(totalClass, totalEnroll);
@@ -27,7 +29,13 @@ const TotalUsers = () => {
       });
   }, []);
   return (
-    <div className="grid md:grid-cols-4 gap-7">
+    <div
+      className={
+        themeColor === "light"
+          ? "grid md:grid-cols-4 gap-7"
+          : "grid md:grid-cols-4 gap-7 text-black"
+      }
+    >
       <div className="col-span-2 space-y-7 ">
         <div className="flex items-center gap-3 bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl p-4 text-3xl font-semibold">
           <p className="bg-green-500 rounded-full p-2">

@@ -7,8 +7,8 @@ const Footer = () => {
     <footer
       className={
         themeColor === "light"
-          ? "footer bg-base-300 text-black p-10"
-          : "footer bg-base-300 p-10 text-white"
+          ? "footer bg-base-300 text-black pl-16 py-5"
+          : "footer bg-base-300 pl-16 py-5 text-white"
       }
     >
       <nav>

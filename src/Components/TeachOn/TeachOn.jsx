@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet";
 const TeachOn = () => {
   const [submiting, setSubmiting] = useState(false);
   const [reject, setReject] = useState(null);
-  const { user } = useContext(MainContext);
+  const { user, themeColor } = useContext(MainContext);
   const axiosPrivet = useAxiosPrivet();
   const [data, refetch] = useAllUsers(`/onteach/${user?.email}`);
 
@@ -100,7 +100,13 @@ const TeachOn = () => {
       {/* role student chacking */}
       {data?.role === "student" ? (
         <div className={reject?.status ? "hidden" : " w-11/12 mx-auto py-10"}>
-          <h1 className="text-3xl font-semibold text-center mb-6">
+          <h1
+            className={
+              themeColor === "light"
+                ? "text-3xl font-semibold text-center mb-6"
+                : "text-3xl font-semibold text-center mb-6 text-white"
+            }
+          >
             Submit Your Info
           </h1>
           <form
@@ -115,7 +121,11 @@ const TeachOn = () => {
               <input
                 type="text"
                 {...register("name", { required: true })}
-                className="input input-bordered w-full"
+                className={
+                  themeColor === "light"
+                    ? "input input-bordered w-full"
+                    : "input input-bordered w-full bg-gray-100 text-black"
+                }
                 placeholder="Enter your name"
               />
               {errors?.name && (
@@ -124,13 +134,17 @@ const TeachOn = () => {
             </div>
 
             {/* Images (Logged-in User Image) */}
-            <div className="text-center">
+            <div className="">
               <label className="block mb-2 font-medium text-gray-700">
                 Profile Picture
               </label>
               <input
                 type="text"
-                className="input input-bordered w-full"
+                className={
+                  themeColor === "light"
+                    ? "input input-bordered w-full"
+                    : "input input-bordered w-full bg-gray-100 text-black"
+                }
                 value={user?.photoURL || ""}
               />
             </div>
@@ -144,7 +158,11 @@ const TeachOn = () => {
                 type="email"
                 value={user?.email || "robiulhasan@gmail.com"}
                 readOnly
-                className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+                className={
+                  themeColor === "light"
+                    ? "input input-bordered w-full"
+                    : "input input-bordered w-full bg-gray-100 text-black"
+                }
               />
             </div>
 
@@ -155,7 +173,11 @@ const TeachOn = () => {
               </label>
               <select
                 {...register("experience", { required: true })}
-                className="select select-bordered w-full"
+                className={
+                  themeColor === "light"
+                    ? "select select-bordered w-full"
+                    : "select select-bordered w-full text-black bg-gray-100"
+                }
               >
                 <option value="">Select experience level</option>
                 <option value="beginner">Beginner</option>
@@ -175,7 +197,11 @@ const TeachOn = () => {
               <input
                 type="text"
                 {...register("title", { required: true })}
-                className="input input-bordered w-full"
+                className={
+                  themeColor === "light"
+                    ? "input input-bordered w-full"
+                    : "input input-bordered w-full bg-gray-100 text-black"
+                }
                 placeholder="Enter a title"
               />
               {errors?.title && (
@@ -190,7 +216,11 @@ const TeachOn = () => {
               </label>
               <select
                 {...register("category", { required: true })}
-                className="select select-bordered w-full"
+                className={
+                  themeColor === "light"
+                    ? "select select-bordered w-full"
+                    : "select select-bordered w-full text-black bg-gray-100"
+                }
               >
                 <option value="">Select a category</option>
                 <option value="web-development">Web Development</option>
@@ -209,7 +239,11 @@ const TeachOn = () => {
               <button
                 disabled={submiting}
                 type="submit"
-                className="btn bg-indigo-300 hover:bg-green-400  sm:w-auto sm:px-8 py-2 w-full flex-1"
+                className={
+                  themeColor === "light"
+                    ? "btn bg-indigo-300 hover:bg-green-400  sm:w-auto sm:px-8 py-2 w-full flex-1"
+                    : "btn bg-indigo-300 hover:bg-green-400  sm:w-auto sm:px-8 py-2 w-full flex-1 text-black"
+                }
               >
                 Submit for Review
               </button>

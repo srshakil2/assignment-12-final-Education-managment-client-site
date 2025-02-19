@@ -28,6 +28,7 @@ import EnrollClassDetails from "./Components/Pages/Student/EnrollClassDetails";
 import Privet from "./Provider/Privet";
 import PrivetTeacher from "./Provider/PtivetTeacher";
 import PrivetAddmin from "./Provider/PrivetAddmin";
+import ContactUs from "./Components/ContactUs";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -54,7 +55,9 @@ const router = createBrowserRouter([
           </Privet>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
+          fetch(
+            `https://education-server-site.vercel.app/allclass/iddataloard/${params.id}`
+          ),
       },
       {
         path: "/payment/:id",
@@ -65,12 +68,31 @@ const router = createBrowserRouter([
           </Privet>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
+          fetch(
+            `https://education-server-site.vercel.app/allclass/iddataloard/${params.id}`
+          ),
       },
       {
         path: "/teachon",
         // privet
-        element: <TeachOn></TeachOn>,
+        element: (
+          <Privet>
+            <TeachOn></TeachOn>
+          </Privet>
+        ),
+      },
+      {
+        path: "/profile",
+
+        element: (
+          <Privet>
+            <Profile></Profile>
+          </Privet>
+        ),
+      },
+      {
+        path: "/contact",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },
@@ -117,7 +139,9 @@ const router = createBrowserRouter([
           </PrivetTeacher>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allclass/iddataloard/${params.id}`),
+          fetch(
+            `https://education-server-site.vercel.app/allclass/iddataloard/${params.id}`
+          ),
       },
       {
         path: "/dashboard/teacherreq",
@@ -164,17 +188,19 @@ const router = createBrowserRouter([
           </Privet>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/onteach/${params.email}`),
+          fetch(
+            `https://education-server-site.vercel.app/onteach/${params.email}`
+          ),
       },
-      {
-        path: "/dashboard/profile",
-        // privet sobar jonno
-        element: (
-          <Privet>
-            <Profile></Profile>
-          </Privet>
-        ),
-      },
+      // {
+      //   path: "/dashboard/profile",
+
+      //   element: (
+      //     <Privet>
+      //       <Profile></Profile>
+      //     </Privet>
+      //   ),
+      // },
     ],
   },
   {

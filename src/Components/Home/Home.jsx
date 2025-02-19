@@ -11,7 +11,7 @@ const Home = () => {
       </Helmet>
 
       {/* this is navber */}
-      <div className="sticky top-0 z-10 opacity-90">
+      <div className="sticky top-0 z-30 opacity-90">
         <Navber></Navber>
       </div>
 

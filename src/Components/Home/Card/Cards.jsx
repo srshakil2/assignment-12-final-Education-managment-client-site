@@ -23,12 +23,18 @@ const Cards = () => {
       return i;
     });
     if (sorted == "asc") {
-      const ascSort = filterData.sort((a, b) => a.enroll - b.enroll);
+      // const ascSort = filterData.sort((a, b) => a.enroll - b.enroll);
+      const ascSort = filterData.sort(
+        (a, b) => Number(a.price) - Number(b.price)
+      );
       const ascConfrimData = ascSort.slice(0, 6);
       setSortedData(ascConfrimData);
       return;
     } else if (sorted == "desc") {
-      const descSort = filterData.sort((a, b) => b.enroll - a.enroll);
+      // const descSort = filterData.sort((a, b) => b.enroll - a.enroll);
+      const descSort = filterData.sort(
+        (a, b) => Number(b.price) - Number(a.price)
+      );
       const descConfrimData = descSort.slice(0, 6);
       setSortedData(descConfrimData);
       return;
@@ -55,14 +61,14 @@ const Cards = () => {
             : "flex gap-3 items-center justify-center mb-6 text-white"
         }
       >
-        <h4 className="text-xl font-semibold text-nowrap">Sort By Enroll:</h4>
+        <h4 className="text-xl font-semibold text-nowrap">Sort By Price:</h4>
         <select
           onChange={(e) => setSorted(e.target.value)}
           className="select select-bordered w-full max-w-xs"
         >
           <option value={""}>Default Data</option>
-          <option value="asc">Ascending By Enroll</option>
-          <option value="desc">Descending By Enroll</option>
+          <option value="asc">Ascending By Price</option>
+          <option value="desc">Descending By Price</option>
         </select>
       </div>
       {/* grid md:grid-cols-2 lg:grid-cols-3 gap-5 */}

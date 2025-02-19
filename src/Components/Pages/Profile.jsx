@@ -25,12 +25,12 @@ const Profile = () => {
   const { email: gmail, name, role } = profile || {};
   return (
     <>
-      <div>
+      <div className="mb-5">
         <Helmet>
           <title>Education || Profile</title>
         </Helmet>
         {/* max-w-sm md:max-w-md */}
-        <div className="card bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg rounded-xl overflow-hidden hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-in-out animate-bounce-in p-6">
+        <div className="card bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg rounded-none overflow-hidden  hover:shadow-2xl transition-transform duration-300 ease-in-out animate-bounce-in p-6">
           {/* User Image */}
           <div className="avatar mx-auto transform hover:rotate-6 transition-transform duration-500">
             <div className="w-24 md:w-40 rounded-full ring ring-white ring-offset-4">

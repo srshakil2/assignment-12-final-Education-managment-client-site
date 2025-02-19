@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { MainContext } from "../../Provider/Authcontext";
 
 const DashDefualt = () => {
-  const { user } = useContext(MainContext);
+  const { user, themeColor } = useContext(MainContext);
   // console.log(user);
   return (
     <div>

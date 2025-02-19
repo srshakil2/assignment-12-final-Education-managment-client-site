@@ -145,7 +145,7 @@ const Dashboard = () => {
         )}
 
         {/* profile sobar jonno */}
-        <div>
+        {/* <div>
           <NavLink
             to={"/dashboard/profile"}
             className={"text-xl font-bold flex  items-center gap-3"}
@@ -155,7 +155,7 @@ const Dashboard = () => {
             </span>
             <span>Profile</span>
           </NavLink>
-        </div>
+        </div> */}
       </section>
       {/* this is outlet section */}
       <section className=" p-10 col-span-5 lg:col-span-6 ">

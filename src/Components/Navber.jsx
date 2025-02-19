@@ -35,15 +35,21 @@ const Navber = () => {
       <li className="text-white text-lg font-semibold">
         <NavLink to={"/allClass"}>All Classes</NavLink>
       </li>
-      <li className="text-white text-lg font-semibold">
+      <li className={user ? "text-white text-lg font-semibold" : "hidden"}>
+        <Link to={"/dashboard"}>Dashboard</Link>
+      </li>
+      <li className={user ? "text-white text-lg font-semibold" : "hidden"}>
         <NavLink to={"/teachon"}>Teach on</NavLink>
+      </li>
+      <li className="text-white text-lg font-semibold">
+        <NavLink to={"/contact"}>Contact Us</NavLink>
       </li>
     </>
   );
 
   // console.log(themeColor);
   return (
-    <div className="navbar bg-indigo-800 px-10">
+    <div className="navbar bg-indigo-800 px-10 ">
       {/* Small device */}
       <div className="navbar-start">
         <div className="dropdown">
@@ -112,7 +118,7 @@ const Navber = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <Link to={"/dashboard"}>Dashboard</Link>
+                  <Link to={"/profile"}>Profile</Link>
                 </li>
                 <li>
                   <button onClick={handelLogOutUser} className="">
@@ -135,6 +141,7 @@ const Navber = () => {
         )}
       </div>
 
+      {/* togol dark and light mode */}
       <div>
         <label className="swap swap-rotate text-white">
           {/* this hidden checkbox controls the state */}
